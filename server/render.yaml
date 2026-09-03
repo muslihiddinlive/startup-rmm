@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: startup-rmm
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: SECRET_TOKEN
+        sync: false          # Dashboard dan qo'lda kiriting
+      - key: TELEGRAM_TOKEN
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: RENDER_URL
+        sync: false          # https://startup-rmm.onrender.com
